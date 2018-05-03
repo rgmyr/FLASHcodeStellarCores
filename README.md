@@ -12,7 +12,7 @@ Parts of the code utilize [libtourtre: A Countour Tree Library](http://graphics.
 
 `CoreAnalyzer::altFindCoreRegion()` uses a seeded region growing method to attempt to find equivalent core regions in a different, more efficient manner. 
 
-In theory, these methods should have produced identical cell-to-region mappings, but I do not think they in fact did, and I can't say I ever figured out why. They did, however, both did produce a very low-mass stellar Intial Mass Function (IMF), suggesting that competetive accretion was much more descriptive of the stellar formation processes in these simulations, which is in agreement with the findings of the 2015 paper using the same simulations: *Star formation in the first galaxies - III* (linked below).
+In theory, these methods should have produced identical cell-to-region mappings, but I do not think they in fact did, and I can't say I ever figured out why. They did, however, both did produce a very low-mass stellar initial mass function (IMF) that seemed uncorrelated with the final stellar mass function, suggesting that competetive accretion was much more descriptive of the stellar formation processes in these simulations, which is in agreement with the findings of the 2015 paper using the same simulations: *Star formation in the first galaxies - III* (linked below).
 
 ## Papers
 
