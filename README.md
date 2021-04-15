@@ -1,22 +1,22 @@
 ## Overview
 
-Source repository for the `C++` analysis code from an undergraduate research project in Astrophysics, where I aimed to study the relative applicabilities of the "Core Accretion" and "Competetive Accretion" theories of stellar formation in the context of [FLASH code](http://flash.uchicago.edu/site/flashcode/) simulations of star formation in the early universe. This code was written in 2014 while I was at UT-Austin, and was simply migrated from BitBucket in May 2018.
+Source repository for the `C++` analysis code from an undergraduate research project in astrophysics focusing on the "Core Accretion" and "Competetive Accretion" theories of stellar formation in the context of [FLASH code](http://flash.uchicago.edu/site/flashcode/) simulations of star formation in the early universe. This code was written in 2014 at UT-Austin, and was migrated from BitBucket in May 2018.
 
-It's unlikely that this code will be functional out-of-the-box for abitrary users, but pieces of it may be helpful for someone who's trying to analyze checkpoint file mesh data from [FLASH code](http://flash.uchicago.edu/site/flashcode/) radiation-hydrodynamic simulations with Adaptive Mesh Refinement and/or Lagrangian sink particles. If you are in fact such a person, feel free to reach out and I'll do my best to answer any questions. 
+It's unlikely that this code will be functional out-of-the-box, but pieces of it may be helpful for someone who's trying to analyze checkpoint file mesh data from [FLASH code](http://flash.uchicago.edu/site/flashcode/) radiation-hydrodynamic simulations with Adaptive Mesh Refinement and/or Lagrangian sink particles.
 
-I may add more documentation describing individual source files and data formats if there's any interest, but for now the header files in `Include/` are probably the quickest way to get a sense of the code structure.
+For now the header files in `Include/` are probably the quickest way to get a sense of the code structure. Feel free to reach out and I'll do my best to answer any questions.
 
 ## Stellar Cores
 
-Parts of the code utilize [libtourtre: A Countour Tree Library](http://graphics.cs.ucdavis.edu/~sdillard/libtourtre/doc/html/) to build countour trees from the gravitatial potential field. Stellar cores are then defined under the assumption that cells mapping to the connected component directly "above" the node corresponding to a sink particle comprise the stellar core. 
+Parts of the code utilize [libtourtre: A Countour Tree Library](http://graphics.cs.ucdavis.edu/~sdillard/libtourtre/doc/html/) to build countour trees from the gravitatial potential field. Stellar cores are then defined as containing the cells mapping to the connected component directly "above" the node of the corresponding stellar sink particle.
 
-`CoreAnalyzer::altFindCoreRegion()` uses a seeded region growing method to attempt to find topologically equivalent core regions in a different, more efficient manner. 
+`CoreAnalyzer::altFindCoreRegion()` uses a seeded region growing method to attempt to find topologically equivalent core regions in a different, more efficient manner.
 
-In theory, these methods should have produced identical cell-to-region mappings, but I do not think they in fact did, and I can't say I ever figured out why. They did, however, both did produce a very low-mass stellar initial mass function (IMF) that seemed uncorrelated with the final stellar mass function, suggesting that competetive accretion was much more descriptive of the stellar formation processes in these simulations, which is in agreement with the findings of the 2015 paper using the same simulations: *Star formation in the first galaxies - III* (linked below).
+In theory, these methods should have produced identical cell-to-region mappings, although in practice they produce slightly different results. They did both produce very low-mass stellar initial mass functions (IMFs) that were uncorrelated with the final stellar mass function, suggesting that competetive accretion was much more descriptive of the stellar formation processes in these simulations. This is in agreement with the findings of the 2015 paper based on the same simulations: *Star formation in the first galaxies - III* (linked below).
 
 ## Papers
 
-For information about the particular simulations which produced the data this code was written to process and analyze, and their scientific purpose and context, consult the following papers:
+For more information about the simulations, and their scientific purpose and context, consult the following papers:
 
 ### Before this code was written:
 
